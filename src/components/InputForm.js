@@ -6,14 +6,18 @@ class InputForm extends React.Component
     {
         super(props);
         this.state = {
-            val : this.props.initial
+            val : "hello",
+            name : "Pratik"
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(e)
     {
-        this.setState({val : e.target.value});
+        const {name, value} = e.target;
+        this.setState({
+            [name] : value
+        });
     }
 
     render()
@@ -22,7 +26,8 @@ class InputForm extends React.Component
         return(
             <div>
                 <form>
-                    <input value={this.state.val} onChange={this.handleChange} />
+                    <input name="name" value={this.state.name} onChange={this.handleChange} /><br />
+                    <input name="val" value={this.state.val} onChange={this.handleChange} />
                     <button type="submit">Send!</button>
                 </form>
             </div>
