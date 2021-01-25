@@ -1,4 +1,5 @@
 import React from 'react';
+import MessageComponent from './MessageComponent';
 
 class MainComponent extends React.Component
 {
@@ -38,9 +39,12 @@ class MainComponent extends React.Component
 
     render()
     {
+        const components = this.state.messages.map( (obj, index) => <MessageComponent data={obj} key={index} /> ); 
         return(
             <div>
-                There are {this.state.messages.length} message here.
+                There are {this.state.messages.length} message here.<br /><hr/>
+                {components}
+                <hr />
             </div>
         );
     }

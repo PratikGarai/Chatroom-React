@@ -24,6 +24,9 @@ class InputForm extends React.Component
     handleSubmit(e)
     {
         e.preventDefault();
+
+        if(this.state.val===""|| this.state.name==="")
+            return;
         const newMessage = {
             name : this.state.name,
             val : this.state.val
@@ -42,8 +45,8 @@ class InputForm extends React.Component
         return(
             <div>
                 <form>
-                    <input name="name" value={this.state.name} onChange={this.handleChange} /><br />
-                    <input name="val" value={this.state.val} onChange={this.handleChange} />
+                    <input name="name" value={this.state.name} onChange={this.handleChange}  /><br />
+                    <input name="val" value={this.state.val} onChange={this.handleChange}  />
                     <button onClick={this.handleSubmit} type="submit">Send!</button>
                 </form>
             </div>
