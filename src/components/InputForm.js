@@ -6,10 +6,11 @@ class InputForm extends React.Component
     {
         super(props);
         this.state = {
-            val : "hello",
-            name : "Pratik"
+            val : "",
+            name : ""
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e)
@@ -20,6 +21,21 @@ class InputForm extends React.Component
         });
     }
 
+    handleSubmit(e)
+    {
+        e.preventDefault();
+        const newMessage = {
+            name : this.state.name,
+            val : this.state.val
+        };
+        this.props.componentRef.addMessage(newMessage);
+
+        this.setState({
+            name : "",
+            val : ""
+        })
+    }
+
     render()
     {
         // console.log(this.props);
@@ -28,7 +44,7 @@ class InputForm extends React.Component
                 <form>
                     <input name="name" value={this.state.name} onChange={this.handleChange} /><br />
                     <input name="val" value={this.state.val} onChange={this.handleChange} />
-                    <button type="submit">Send!</button>
+                    <button onClick={this.handleSubmit} type="submit">Send!</button>
                 </form>
             </div>
         );
