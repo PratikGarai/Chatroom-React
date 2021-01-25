@@ -1,4 +1,15 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing(1),
+    },
+    buttonText : {
+        marginRight : "5px",
+    }
+});
 
 class InputForm extends React.Component
 {
@@ -42,16 +53,23 @@ class InputForm extends React.Component
     render()
     {
         // console.log(this.props);
+        const classes = this.props.classes;
         return(
             <div>
                 <form>
                     <input name="name" value={this.state.name} onChange={this.handleChange}  /><br />
+
                     <input name="val" value={this.state.val} onChange={this.handleChange}  />
-                    <button onClick={this.handleSubmit} type="submit">Send!</button>
+
+                    <Button variant="contained" color="primary" className={classes.button} onClick={this.handleSubmit} type="submit">
+                        <span className={classes.buttonText}>Send</span>
+                        <i className='bx bxs-send'></i>
+                    </Button>
+                    
                 </form>
             </div>
         );
     }
 }
 
-export default InputForm;
+export default withStyles(styles)(InputForm);
