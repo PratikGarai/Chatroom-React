@@ -18,7 +18,6 @@ class InputForm extends React.Component
         super(props);
         this.state = {
             val : "",
-            name : props.name
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,7 +41,7 @@ class InputForm extends React.Component
             name : this.props.name,
             val : this.state.val
         };
-        this.props.componentRef.addMessage(newMessage);
+        this.props.addMessage(newMessage);
 
         this.setState({
             name : this.props.name,
@@ -53,6 +52,7 @@ class InputForm extends React.Component
     render()
     {
         // console.log(this.props);
+        // console.log(this.state);
         const classes = this.props.classes;
         return(
             <div>
@@ -75,7 +75,7 @@ class InputForm extends React.Component
                         className={classes.button} 
                         onClick={this.handleSubmit} 
                         type="submit"
-                        disabled={!this.state.name||!this.state.val||!this.props.componentRef.addMessage}>
+                        disabled={!this.props.name||!this.state.val||!this.props.addMessage}>
                             <span className={classes.buttonText}>Send</span>
                             <i className='bx bxs-send'></i>
                     </Button>

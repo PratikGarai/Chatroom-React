@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputForm from './components/InputForm';
 import MainComponent from './components/MainComponent';
 
 function App() {
 
-  const [name, setName] = useState("Pratik");
+  const [name, setName] = useState("");
+  const [messages, setMessages] = useState([]);
 
-  const componentRef = {
-    messages : [],
-    setMessages : null
-  };
+  useEffect( ()=> {
+    setName(prompt('Enter your name : '));
+  }, []);
+
+  const addMessage = (message)=> {
+    setMessages([...messages, message]);
+  }
 
   return (
     <div className="App">
-      <MainComponent componentRef={componentRef} />
-      <InputForm name={name} componentRef={componentRef} />
+      <h1>Welcome {name}</h1> 
+      <MainComponent messages={messages} />
+      <InputForm name={name} addMessage={addMessage} />
     </div>
   );
 }
