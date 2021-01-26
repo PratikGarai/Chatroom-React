@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import {FormControl, Button, InputLabel, Input, FormHelperText} from '@material-ui/core';
 
 const styles = theme => ({
     button: {
@@ -18,7 +18,7 @@ class InputForm extends React.Component
         super(props);
         this.state = {
             val : "",
-            name : ""
+            name : props.name
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,13 +39,13 @@ class InputForm extends React.Component
         if(this.state.val===""|| this.state.name==="")
             return;
         const newMessage = {
-            name : this.state.name,
+            name : this.props.name,
             val : this.state.val
         };
         this.props.componentRef.addMessage(newMessage);
 
         this.setState({
-            name : "",
+            name : this.props.name,
             val : ""
         })
     }
@@ -57,15 +57,29 @@ class InputForm extends React.Component
         return(
             <div>
                 <form>
-                    <input name="name" value={this.state.name} onChange={this.handleChange}  /><br />
+                    {/* <FormControl>
+                        <InputLabel htmlFor="my-input1">Name</InputLabel>
+                        <Input id="my-input1" name="name" value={this.state.name} onChange={this.handleChange}  />
+                        <FormHelperText id="my-helper-text"></FormHelperText>
+                    </FormControl> */}
 
-                    <input name="val" value={this.state.val} onChange={this.handleChange}  />
+                    <FormControl>
+                        <InputLabel htmlFor="my-input2">Enter a message...</InputLabel>
+                        <Input id="my-input2" name="val" value={this.state.val} onChange={this.handleChange} />
+                        {/* <FormHelperText id="my-helper-text"></FormHelperText> */}
+                    </FormControl>
 
-                    <Button variant="contained" color="primary" className={classes.button} onClick={this.handleSubmit} type="submit">
-                        <span className={classes.buttonText}>Send</span>
-                        <i className='bx bxs-send'></i>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        className={classes.button} 
+                        onClick={this.handleSubmit} 
+                        type="submit"
+                        disabled={!this.state.name||!this.state.val||!this.props.componentRef.addMessage}>
+                            <span className={classes.buttonText}>Send</span>
+                            <i className='bx bxs-send'></i>
                     </Button>
-                    
+
                 </form>
             </div>
         );
