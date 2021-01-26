@@ -1,4 +1,7 @@
 import React from 'react';
+import {Card, CardContent, Typography} from '@material-ui/core';
+
+import '../css/MessageComponent.css';
 
 class MessageComponent extends React.Component
 {
@@ -10,15 +13,15 @@ class MessageComponent extends React.Component
     render()
     {
         return (
-            <React.Fragment>
-                <div>
-                    <p>
-                        <strong>{this.props.data.name} sent :</strong><br />
-                        <em>{this.props.data.val}</em>
-                    </p>
-                </div>
-                <br/>
-            </React.Fragment>
+            <div className={(this.props.username===this.props.data.name)?"message message__user":"message"}>
+                <Card className={(this.props.username===this.props.data.name)?"message__userCard":"message__guestCard"}>
+                    <CardContent>
+                        <Typography variant="h5" component="h2">
+                        {this.props.data.name} : {this.props.data.message}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </div>
         )
     }
 }

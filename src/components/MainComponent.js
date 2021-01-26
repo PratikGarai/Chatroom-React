@@ -10,7 +10,7 @@ class MainComponent extends React.Component
 
     render()
     {
-        const components = this.props.messages.map( (obj, index) => <MessageComponent data={obj} key={index} /> ); 
+        const components = this.props.messages.map( (obj, index) => <MessageComponent username={this.props.username} data={obj} key={index} /> ); 
         return(
             <div>
                 There are {this.props.messages.length} message here.<br /><hr/>

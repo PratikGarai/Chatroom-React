@@ -39,7 +39,7 @@ class InputForm extends React.Component
             return;
         const newMessage = {
             name : this.props.name,
-            val : this.state.val
+            message : this.state.val
         };
         this.props.addMessage(newMessage);
 

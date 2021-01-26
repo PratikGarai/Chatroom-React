@@ -4,8 +4,13 @@ import MainComponent from './components/MainComponent';
 
 function App() {
 
+  const sampleData = [
+    { name : "User 1", message : "Message 1" },
+    { name : "User 2", message : "Message 2" },
+  ]
+
   const [name, setName] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(sampleData);
 
   useEffect( ()=> {
     setName(prompt('Enter your name : '));
@@ -18,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome {name}</h1> 
-      <MainComponent messages={messages} />
+      <MainComponent username={name} messages={messages} />
       <InputForm name={name} addMessage={addMessage} />
     </div>
   );
