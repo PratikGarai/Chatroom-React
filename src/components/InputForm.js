@@ -1,6 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import {FormControl, Button, InputLabel, Input, FormHelperText} from '@material-ui/core';
+import db from '../firebase';
+import firebase from 'firebase';
 
 const styles = theme => ({
     button: {
@@ -39,9 +41,14 @@ class InputForm extends React.Component
             return;
         const newMessage = {
             name : this.props.name,
-            message : this.state.val
+            message : this.state.val,
+            timestamp : firebase.firestore.FieldValue.serverTimestamp()
         };
-        this.props.addMessage(newMessage);
+
+        // this.props.addMessage(newMessage);
+        db
+            .collection('messages')
+            .add(newMessage);
 
         this.setState({
             name : this.props.name,

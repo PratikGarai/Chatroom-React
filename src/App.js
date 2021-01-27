@@ -2,17 +2,26 @@ import React, { useEffect, useState } from 'react';
 import InputForm from './components/InputForm';
 import MainComponent from './components/MainComponent';
 
+import db from './firebase';
+
 function App() {
 
-  const sampleData = [
-    { name : "User 1", message : "Message 1" },
-    { name : "User 2", message : "Message 2" },
-  ]
+  // const sampleData = [
+  //   { name : "User 1", message : "Message 1" },
+  //   { name : "User 2", message : "Message 2" },
+  // ]
 
   const [name, setName] = useState("");
-  const [messages, setMessages] = useState(sampleData);
+  const [messages, setMessages] = useState([]);
 
   useEffect( ()=> {
+    db
+      .collection('messages')
+      .orderBy("timestamp", "asc")
+      .onSnapshot( snapshot => {
+          setMessages(snapshot.docs.map( doc => doc.data()));
+      });
+
     setName(prompt('Enter your name : '));
   }, []);
 
