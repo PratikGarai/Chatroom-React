@@ -4,8 +4,14 @@ import {Card, CardContent, Typography} from '@material-ui/core';
 import '../css/MessageComponent.css';
 
 const MessageComponent = forwardRef((props, ref) => {
-    var dt = props.data.timestamp.toDate();
-    var tm = " | "+dt.getHours()+":"+dt.getMinutes();
+
+    var dt=null;
+    var tm=null;
+    if(props.data.timestamp)
+    {
+        dt = props.data.timestamp.toDate();
+        tm = " | "+dt.getHours()+":"+dt.getMinutes();
+    }
 
     return (
         <div ref={ref} className={(props.username===props.data.name)?"message message__user":"message"}>
