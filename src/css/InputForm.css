@@ -1,0 +1,25 @@
+.app__form {
+    background-color: #e9e9eb;
+    position: fixed;
+    bottom : 0px;
+    padding-top : 20px;
+    padding-left : 20px;
+    padding-right : 20px;
+    padding-bottom : 20px;
+    z-index: 1;
+    width : 100%;
+}
+
+.app__formControl {
+    display: flex !important;
+    flex-direction: row !important;
+    padding-right: 20px !important;
+}
+
+.app__input{
+    flex : 1;
+}
+
+.app__button__send {
+    flex : 0;
+}

@@ -28,9 +28,11 @@ function App() {
 
   return (
     <div className="App">
-      <img src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=150&h=150"></img>
-      <h1>React Chatroom App </h1>
-      <span className="name-tag">Welcome {name}</span> 
+      <div className="header">
+        <img src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=100&h=100" alt=""></img>
+        <h2> React Chatroom App </h2>
+        <h3>Welcome : {name}</h3> 
+      </div>
       <MainComponent username={name} messages={messages} />
       <InputForm name={name} addMessage={addMessage} />
     </div>

@@ -1,0 +1,9 @@
+.main-body {
+    position: absolute;
+    top : 250px;
+    left : 20px;
+    right : 20px;
+    bottom : 80px;
+    margin-top: 20px;
+    overflow-y: scroll;
+}

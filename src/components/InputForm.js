@@ -1,19 +1,9 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import {FormControl, Button, InputLabel, Input, FormHelperText} from '@material-ui/core';
+import {FormControl, Button, Input} from '@material-ui/core';
 import db from '../firebase';
 import firebase from 'firebase';
 
 import '../css/InputForm.css'; 
-
-const styles = theme => ({
-    button: {
-        margin: theme.spacing(1),
-    },
-    buttonText : {
-        marginRight : "5px",
-    }
-});
 
 class InputForm extends React.Component
 {
@@ -59,26 +49,22 @@ class InputForm extends React.Component
 
     render()
     {
-        const classes = this.props.classes;
         return(
-            <div>
-                <form className="app__form">
+            <div className="app__form">
+                <form>
 
-                    <FormControl>
-                        <InputLabel htmlFor="my-input2">Enter a message...</InputLabel>
-                        <Input id="my-input2" name="val" value={this.state.val} onChange={this.handleChange} />
+                    <FormControl className="app__formControl">
+                        <Input className="app__input" placeholder="Enter a message..." id="my-input2" name="val" value={this.state.val} onChange={this.handleChange} />
+                        <Button 
+                            variant="text" 
+                            color="primary" 
+                            className="app__button__send" 
+                            onClick={this.handleSubmit} 
+                            type="submit"
+                            disabled={!this.props.name||!this.state.val||!this.props.addMessage}>
+                                <i className='sendIcon bx bxs-send'></i>
+                        </Button>
                     </FormControl>
-
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        className={classes.button} 
-                        onClick={this.handleSubmit} 
-                        type="submit"
-                        disabled={!this.props.name||!this.state.val||!this.props.addMessage}>
-                            <span className={classes.buttonText}>Send</span>
-                            <i className='bx bxs-send'></i>
-                    </Button>
 
                 </form>
             </div>
@@ -86,4 +72,4 @@ class InputForm extends React.Component
     }
 }
 
-export default withStyles(styles)(InputForm);
+export default InputForm;

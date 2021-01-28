@@ -1,7 +1,10 @@
 .message {
-    padding : 10px;
+    text-align: left;
+    padding : 0px;
     margin : 10px;
     width : fit-content;
+    color : #a3a3a3;
+    font-family: cursive;
 }
 
 .message__user {
@@ -12,8 +15,13 @@
 
 .message__userCard {
     background-color : #2d5bd8 !important; 
+    color: white !important ;
 }
 
 .message__guestCard {
     background-color : #e9e9eb !important; 
+}
+
+.message__text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
