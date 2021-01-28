@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageComponent from './MessageComponent';
+import FlipMove from 'react-flip-move';
 
 class MainComponent extends React.Component
 {
@@ -14,7 +15,9 @@ class MainComponent extends React.Component
         return(
             <div>
                 There are {this.props.messages.length} message here.<br /><hr/>
-                {components}
+                <FlipMove>
+                    {components}
+                </FlipMove>
                 <hr />
             </div>
         );
