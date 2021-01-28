@@ -2,6 +2,8 @@ import React from 'react';
 import MessageComponent from './MessageComponent';
 import FlipMove from 'react-flip-move';
 
+import '../css/MainComponent.css';
+
 class MainComponent extends React.Component
 {
     constructor(props)
@@ -13,12 +15,10 @@ class MainComponent extends React.Component
     {
         const components = this.props.messages.map( (obj, index) => <MessageComponent username={this.props.username} data={obj} key={index} /> ); 
         return(
-            <div>
-                There are {this.props.messages.length} message here.<br /><hr/>
+            <div className="main-body">
                 <FlipMove>
                     {components}
                 </FlipMove>
-                <hr />
             </div>
         );
     }

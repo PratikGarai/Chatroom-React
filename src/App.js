@@ -4,12 +4,9 @@ import MainComponent from './components/MainComponent';
 
 import db from './firebase';
 
-function App() {
+import './css/App.css';
 
-  // const sampleData = [
-  //   { name : "User 1", message : "Message 1" },
-  //   { name : "User 2", message : "Message 2" },
-  // ]
+function App() {
 
   const [name, setName] = useState("");
   const [messages, setMessages] = useState([]);
@@ -31,7 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome {name}</h1> 
+      <img src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=150&h=150"></img>
+      <h1>React Chatroom App </h1>
+      <span className="name-tag">Welcome {name}</span> 
       <MainComponent username={name} messages={messages} />
       <InputForm name={name} addMessage={addMessage} />
     </div>

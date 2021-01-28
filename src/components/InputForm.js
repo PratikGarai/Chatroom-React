@@ -4,6 +4,8 @@ import {FormControl, Button, InputLabel, Input, FormHelperText} from '@material-
 import db from '../firebase';
 import firebase from 'firebase';
 
+import '../css/InputForm.css'; 
+
 const styles = theme => ({
     button: {
         margin: theme.spacing(1),
@@ -45,7 +47,6 @@ class InputForm extends React.Component
             timestamp : firebase.firestore.FieldValue.serverTimestamp()
         };
 
-        // this.props.addMessage(newMessage);
         db
             .collection('messages')
             .add(newMessage);
@@ -58,22 +59,14 @@ class InputForm extends React.Component
 
     render()
     {
-        // console.log(this.props);
-        // console.log(this.state);
         const classes = this.props.classes;
         return(
             <div>
-                <form>
-                    {/* <FormControl>
-                        <InputLabel htmlFor="my-input1">Name</InputLabel>
-                        <Input id="my-input1" name="name" value={this.state.name} onChange={this.handleChange}  />
-                        <FormHelperText id="my-helper-text"></FormHelperText>
-                    </FormControl> */}
+                <form className="app__form">
 
                     <FormControl>
                         <InputLabel htmlFor="my-input2">Enter a message...</InputLabel>
                         <Input id="my-input2" name="val" value={this.state.val} onChange={this.handleChange} />
-                        {/* <FormHelperText id="my-helper-text"></FormHelperText> */}
                     </FormControl>
 
                     <Button 
