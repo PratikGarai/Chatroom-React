@@ -14,9 +14,13 @@ function App() {
   useEffect( ()=> {
     db
       .collection('messages')
-      .orderBy("timestamp", "asc")
+      .orderBy("timestamp", "desc")
       .onSnapshot( snapshot => {
-          setMessages(snapshot.docs.map( doc => doc.data()));
+          setMessages(snapshot.docs.map( doc => {
+            const obj = doc.data()
+            obj['id'] = doc.id;
+            return obj;
+          }));
       });
 
     setName(prompt('Enter your name : '));

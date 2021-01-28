@@ -13,7 +13,7 @@ class MainComponent extends React.Component
 
     render()
     {
-        const components = this.props.messages.map( (obj, index) => <MessageComponent username={this.props.username} data={obj} key={index} /> ); 
+        var components = this.props.messages.map( (obj, index) => <MessageComponent username={this.props.username} data={obj} key={obj.id} /> )
         return(
             <div className="main-body">
                 <FlipMove>
